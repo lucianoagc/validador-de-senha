@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.DS_Store
+Thumbs.db
+.env
+*.egg-info/
+usuarios.json
