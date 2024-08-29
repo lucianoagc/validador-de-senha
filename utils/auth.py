@@ -7,8 +7,8 @@ dicionario = ["password", "123456", "admin", "user", "qwerty"]
 # Função para verificar a senha
 def verificar_senha(usuario, senha):
     # Regra 1: Verificar o tamanho mínimo
-    if len(senha) < 6:
-        return "Senha deve ter pelo menos 6 caracteres."
+    if len(senha) < 8:
+        return "Senha deve ter pelo menos 8 caracteres."
     
     # Regra 2: Verificar a presença de letras maiúsculas, minúsculas, números e símbolos
     if not re.search(r'[A-Z]', senha):
