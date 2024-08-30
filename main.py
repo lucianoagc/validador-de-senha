@@ -19,7 +19,7 @@ def exibir_requisitos_senha(usuario, senha):
 usuarios = carregar_usuarios()
 
 # Interface do Streamlit
-st.title("Sistema de Login")
+st.title("Validador de Senha")
 
 opcao = st.selectbox("Selecione a opção", ["Login", "Cadastrar"])
 
