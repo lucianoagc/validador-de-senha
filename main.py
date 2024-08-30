@@ -1,6 +1,19 @@
 import streamlit as st
-from utils.auth import login,cadastrar_usuario
+from utils.auth import login, cadastrar_usuario, verificar_requisitos_senha
 from utils.storage import carregar_usuarios
+
+def exibir_requisitos_senha(usuario, senha):
+    requisitos = verificar_requisitos_senha(usuario, senha)
+    
+    st.subheader("Requisitos da Senha:")
+    for requisito, atendido in requisitos.items():
+        if requisito == "Não conter o nome do usuário" and not usuario:
+            continue  # Não exibe este requisito se o usuário não foi fornecido
+        if atendido:
+            st.markdown(f"✅ **{requisito}**")
+        else:
+            st.markdown(f"❌ **{requisito}**")
+
 
 # Carregar usuários do arquivo
 usuarios = carregar_usuarios()
@@ -19,6 +32,7 @@ if opcao == "Login":
         st.write(mensagem)
 
 elif opcao == "Cadastrar":
+    exibir_requisitos_senha(usuario, senha)
     if st.button("Cadastrar"):
         mensagem = cadastrar_usuario(usuario, senha, usuarios)
         st.write(mensagem)
